@@ -27,7 +27,7 @@ int main(int, char**){
     std::shared_ptr<physics> physicsSubsystem = std::make_shared<physics>(kGravityConstant);
     container::shared().add("physics", physicsSubsystem);
 
-    std::shared_ptr<world> wrld = std::make_shared<world>(kTickRate, &logger, &drone);
+    std::unique_ptr<world> wrld = std::make_unique<world>(kTickRate, &logger, &drone);
     wrld->run(&cancel);
 
     return 0;
